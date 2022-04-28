@@ -51,3 +51,8 @@ export const fetchAllDrinkCategories = async () => {
   console.log(data.drinks);
   return data.drinks;
 };
+
+export const fetchAllIngredients = async () => {
+  const { data } = await api.get('/list.php?i=list');
+  return data.drinks;
+};

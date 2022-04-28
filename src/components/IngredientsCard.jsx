@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IngredientsCard = ({ index, ingredientName }) => (
+const IngredientsCard = ({ index, ingredientName, drinkName }) => (
   <div
     className="ingredientCardDivContainer"
     data-testid={ `${index}-ingredient-card` }
@@ -14,7 +14,7 @@ const IngredientsCard = ({ index, ingredientName }) => (
     <h3
       data-testid={ `${index}-card-name` }
     >
-      {ingredientName}
+      {ingredientName || drinkName}
     </h3>
   </div>
 );
