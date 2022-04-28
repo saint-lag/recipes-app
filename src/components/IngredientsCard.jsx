@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { fetchDrinksByMainIngredient } from '../services/theCockTailDbAPI';
+import { fetchMealsByMainIngredient } from '../services/theMealsDbAPI';
 
 const IngredientsCard = ({ index, ingredientName, drinkName, cardImg }) => (
   <div
@@ -11,11 +13,16 @@ const IngredientsCard = ({ index, ingredientName, drinkName, cardImg }) => (
     >
       {ingredientName || drinkName}
     </h3>
-    <img
-      src={ cardImg }
-      alt={ ingredientName }
-      data-testid={ `${index}-card-img` }
-    />
+    <a
+      href={ () => (drinkName && fetchDrinksByMainIngredient(drinkName))
+      || (ingredientName && fetchMealsByMainIngredient(ingredientName)) }
+    >
+      <img
+        src={ cardImg }
+        alt={ ingredientName }
+        data-testid={ `${index}-card-img` }
+      />
+    </a>
   </div>
 );
 
