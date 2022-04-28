@@ -51,3 +51,21 @@ export const fetchAllMealCategories = async () => {
   console.log(data.categories);
   return data.categories;
 };
+
+export const fetchAllIngredients = async () => {
+  const { data } = await api.get('/list.php?i=list');
+  return data.meals;
+};
+
+// [Q]: Mesma funcionalidade que 'fetchAllMealCategories'?
+export const fetchAllCategories = async () => {
+  const { data } = await api.get('/list.php?c=list');
+  console.log(data.meals);
+  return data.meals;
+};
+
+export const fetchAllAreas = async () => {
+  const { data } = await api.get('/list.php?a=list');
+  console.log(data.meals);
+  return data.meals;
+};
