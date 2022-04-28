@@ -28,7 +28,7 @@ const ExploreFoodsIngredients = () => {
               key={ index }
               index={ index }
               // [Q]: De onde vem a imagem ?
-              // cardImg={ cardImg }
+              cardImg={ `https://www.themealdb.com/images/ingredients/${strIngredient}-small.png` }
               ingredientName={ strIngredient }
               ingredientId={ idIngredient }
               ingredientDescription={ strDescription }

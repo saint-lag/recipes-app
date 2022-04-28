@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IngredientsCard = ({ index, ingredientName, drinkName }) => (
+const IngredientsCard = ({ index, ingredientName, drinkName, cardImg }) => (
   <div
     className="ingredientCardDivContainer"
     data-testid={ `${index}-ingredient-card` }
   >
-    <img
-      src="https://placekitten.com/150/150"
-      alt={ ingredientName }
-      data-testid={ `${index}-card-img` }
-    />
     <h3
       data-testid={ `${index}-card-name` }
     >
       {ingredientName || drinkName}
     </h3>
+    <img
+      src={ cardImg }
+      alt={ ingredientName }
+      data-testid={ `${index}-card-img` }
+    />
   </div>
 );
 

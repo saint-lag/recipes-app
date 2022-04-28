@@ -21,18 +21,15 @@ const ExploreDrinksIngredients = () => {
     <div>
       <Header title="Explore Ingredients" />
       <section className="exploreDrinksIngredientsSection">
-        {ingredients.map(
-          ({ strIngredient1, index }) => (
-            <IngredientsCard
-              // [TODO]: Mudar o valor da key
-              key={ index }
-              index={ index }
-              // [Q]: De onde vem a imagem ?
-              // cardImg={ cardImg }
-              drinkName={ strIngredient1 }
-            />
-          ),
-        )}
+        {ingredients.map(({ strIngredient1, index }) => (
+          <IngredientsCard
+            // [TODO]: Mudar o valor da key
+            key={ index }
+            index={ index }
+            cardImg={ `https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-small.png` }
+            drinkName={ strIngredient1 }
+          />
+        ))}
       </section>
       <Footer />
     </div>
