@@ -1,30 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { updateIngredientsFilter } from '../actions';
 import { fetchDrinksByMainIngredient } from '../services/theCockTailDbAPI';
 import { fetchMealsByMainIngredient } from '../services/theMealsDbAPI';
 
-const IngredientsCard = ({ index, ingredientName, drinkName, cardImg }) => (
-  <div
-    className="ingredientCardDivContainer"
-    data-testid={ `${index}-ingredient-card` }
-  >
-    <h3
-      data-testid={ `${index}-card-name` }
+const IngredientsCard = ({ cardIndex, ingredientName, drinkName, cardImg }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const redirectToFoods = async () => {
+    const results = await fetchMealsByMainIngredient(ingredientName);
+    dispatch(updateIngredientsFilter(results));
+    return navigate('/foods');
+  };
+  const redirectToDrinks = async () => {
+    const results = await fetchDrinksByMainIngredient(drinkName);
+    dispatch(updateIngredientsFilter(results));
+    return ('/drinks');
+  };
+  return (
+    <div
+      className="ingredientCardDivContainer"
+      data-testid={ `${cardIndex}-ingredient-card` }
     >
-      {ingredientName || drinkName}
-    </h3>
-    <a
-      href={ () => (drinkName && fetchDrinksByMainIngredient(drinkName))
-      || (ingredientName && fetchMealsByMainIngredient(ingredientName)) }
-    >
-      <img
-        src={ cardImg }
-        alt={ ingredientName }
-        data-testid={ `${index}-card-img` }
-      />
-    </a>
-  </div>
-);
+      <button
+        type="button"
+        onClick={ async () => (drinkName && redirectToDrinks())
+          || (ingredientName && redirectToFoods()) }
+      >
+        <h3 data-testid={ `${cardIndex}-card-name` }>{ingredientName || drinkName}</h3>
+        <img
+          src={ cardImg }
+          alt={ ingredientName }
+          data-testid={ `${cardIndex}-card-img` }
+        />
+      </button>
+    </div>
+  );
+};
 
 IngredientsCard.propTypes = {
   key: PropTypes.string,

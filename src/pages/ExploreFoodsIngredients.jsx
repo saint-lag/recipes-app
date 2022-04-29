@@ -22,12 +22,11 @@ const ExploreFoodsIngredients = () => {
       <Header title="Explore Ingredients" />
       <section className="exploreFoodsIngredientsSection">
         {ingredients.map(
-          ({ strIngredient, strDescription, idIngredient, index }) => (
+          ({ strIngredient, strDescription, idIngredient }, index) => (
             <IngredientsCard
               // [TODO]: Mudar o valor da key
               key={ index }
-              index={ index }
-              // [Q]: De onde vem a imagem ?
+              cardIndex={ index }
               cardImg={ `https://www.themealdb.com/images/ingredients/${strIngredient}-small.png` }
               ingredientName={ strIngredient }
               ingredientId={ idIngredient }
