@@ -1,0 +1,94 @@
+.favoriteRecipesContainer {
+  height: 570px;
+  margin-bottom: 20px;
+  overflow: scroll;
+  padding-bottom: 10px;
+  position: fixed;
+  top: 60px;
+  width: 360px;
+}
+
+.favoriteFilters {
+  background-color: #0fa36b;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.favoriteCards {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px black;
+  display: flex;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+  position: relative;
+  top: 70px;
+  width: 320px;
+}
+
+.favoriteCardsImg {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  margin-right: 10px;
+  width: 140px;
+}
+
+.favoriteCardsImg img {
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px black;
+  width: 120px;
+}
+
+.favoriteDetails {
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.done-fav-card-h1 {
+  font-size: 24px;
+}
+
+.done-fav-card-h3 {
+  font-size: 18px;
+}
+
+.done-fav-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+  width: 120px;
+}
+
+.done-fav-buttons-container button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  height: 48px;
+  width: 48px;
+}
+
+.done-fav-buttons-container img {
+  margin: auto;
+  width: 24px;
+}
+
+.done-fav-card-h4 {
+  background-color: green;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: auto;
+  margin-top: 3px;
+  padding: 3px;
+  width: 90%;
+}

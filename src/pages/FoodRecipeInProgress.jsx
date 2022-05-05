@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import RecipeInProgress from '../components/RecipeInProgress';
+import { getMealRecipeById } from '../services/theMealsDbAPI';
 
-const FoodRecipeInProgress = () => (
-  <div>FoodRecipeInProgress</div>
-);
+const FoodRecipeInProgress = () => {
+  const params = useParams();
+  const { id } = params;
+  const [recipe, setRecipe] = useState();
+  const [data, setData] = useState();
+  const [local, setLocal] = useState({ cocktails: {}, meals: {} });
+
+  useEffect(() => {
+    const getRecipe = async () => {
+      const fetchRecipe = await getMealRecipeById(id);
+      setData(fetchRecipe);
+      const ingredientes = Object
+        .keys(fetchRecipe).filter((key) => key.includes('strIngredient'));
+      setRecipe({
+        image: fetchRecipe.strMealThumb,
+        name: fetchRecipe.strMeal,
+        category: fetchRecipe.strCategory,
+        ingredients: ingredientes
+          .map((ingrediente) => (fetchRecipe[ingrediente] !== null
+                && fetchRecipe[ingrediente])),
+        preparation: fetchRecipe.strInstructions,
+      });
+    };
+
+    const getLocal = () => {
+      const saveLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      const valida = saveLocal ? saveLocal.meals[id] : [];
+      setLocal(valida);
+    };
+
+    getLocal();
+    getRecipe();
+  }, []);
+
+  return (
+    <RecipeInProgress
+      id={ params.id }
+      page="food"
+      recipe={ recipe }
+      local={ local }
+      data={ data }
+    />
+  );
+};
 
 export default FoodRecipeInProgress;

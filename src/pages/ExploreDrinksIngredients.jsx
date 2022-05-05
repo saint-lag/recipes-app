@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import IngredientsCard from '../components/IngredientsCard';
-import { fetchAllIngredients } from '../services/theCockTailDbAPI';
+import { getAllDrinkIngredients } from '../services/theCockTailDbAPI';
 
 const ExploreDrinksIngredients = () => {
   const [ingredients, setIngredients] = useState([]);
 
   const getAllIngredients = async () => {
     const LAST_CARD = 12;
-    const allIngredients = await fetchAllIngredients();
+    const allIngredients = await getAllDrinkIngredients();
     return allIngredients.splice(0, LAST_CARD);
   };
 

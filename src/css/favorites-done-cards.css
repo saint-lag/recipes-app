@@ -1,11 +1,11 @@
-.drinksContainer {
+.done-fav-cards-container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  left: 0;
+  height: 540px;
   margin: auto;
+  overflow: auto;
   position: fixed;
-  top: 60px;
+  top: 100px;
   width: 360px;
 }

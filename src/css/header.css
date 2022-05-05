@@ -1,8 +1,11 @@
 .headerContainer {
   align-items: center;
-  background-color: #e5e5e5;
+  background-color: var(--main);
+  border: solid 2px black;
+  color: black;
   display: flex;
-  font-size: 2vh;
+  font-size: 12px;
+  height: 65px;
   justify-content: space-around;
   left: 0;
   padding: 5px;
@@ -12,10 +15,29 @@
 }
 
 .searchBarContainer {
-  margin-top: 80px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  width: 350px;
 }
 
-.searchBarContainer input {
+.inputSearchBar {
   border-radius: 10px;
   padding: 8px;
+  width: 350px;
 }
+
+.searchBarRadioButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  width: 340px;
+}
+
+.searchBarContainer button {
+  font-weight: 700;
+  width: 340px;
+}
+

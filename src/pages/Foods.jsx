@@ -1,15 +1,20 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-// import Cards from '../components/Cards';
+import Cards from '../components/Cards';
 import '../css/foods.css';
 
 const Foods = () => (
   <div className="foodsContainer">
     <div>
-      <Header title="Foods" search="true" />
+      <Header title="Meal" search />
     </div>
-    {/* <Cards page="foods" /> */}
+    <div className="foodsCardsContainer">
+      <Cards page="Meal" />
+    </div>
+    <div className="foodsFooterContainer">
+      <Footer />
+    </div>
     <Footer />
   </div>
 );
