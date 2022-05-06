@@ -8,9 +8,9 @@ const ExploreFoodsIngredients = () => {
   const [ingredients, setIngredients] = useState([]);
 
   const getAllIngredients = async () => {
-    const LAST_CARD = 12;
+    const MAXIMUM_RENDER = 12;
     const allIngredients = await getAllMealIngredients();
-    return allIngredients.splice(0, LAST_CARD);
+    return allIngredients.splice(0, MAXIMUM_RENDER);
   };
 
   useEffect(() => {

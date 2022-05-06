@@ -1,30 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { updateIngredientsFilter } from '../actions';
-import { getDrinksByIngredient } from '../services/theCockTailDbAPI';
-import { getMealsByIngredient } from '../services/theMealsDbAPI';
+import { Link } from 'react-router-dom';
+// import { getDrinksByIngredient } from '../services/theCockTailDbAPI';
 
-const IngredientsCard = ({ cardIndex, ingredientName, drinkName, cardImg }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+const IngredientsCard = ({
+  cardIndex,
+  ingredientName,
+  drinkName,
+  cardImg,
+  ingredientId,
+}) => {
+  const ingredientType = ingredientName ? 'food' : 'drink';
 
-  const redirectToFoods = async () => {
-    const results = await getMealsByIngredient(ingredientName);
-    dispatch(updateIngredientsFilter(results));
-    return navigate('/foods');
-  };
-  const redirectToDrinks = async () => {
+  /* const filteredDrinks = async () => {
     const results = await getDrinksByIngredient(drinkName);
-    dispatch(updateIngredientsFilter(results));
-    return ('/drinks');
-  };
+    return results;
+  }; */
+
   return (
-    <button
+    <Link
       type="button"
-      onClick={ async () => (drinkName && redirectToDrinks())
-        || (ingredientName && redirectToFoods()) }
+      to={ `${
+        ingredientType === 'food'
+          ? `/foods/ingredient/${ingredientId}`
+          : `/drinks/ingredient/${drinkName}`
+      }` }
+      state={ { filteredResults: ingredientType === 'food'
+        ? ingredientName : drinkName } }
       className="ingredientCardDivContainer"
       data-testid={ `${cardIndex}-ingredient-card` }
     >
@@ -36,7 +38,7 @@ const IngredientsCard = ({ cardIndex, ingredientName, drinkName, cardImg }) => {
         alt={ ingredientName }
         data-testid={ `${cardIndex}-card-img` }
       />
-    </button>
+    </Link>
   );
 };
 

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import userLogout from '../utils/index';
+import userLogout from '../utils';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import '../css/profile.css';
@@ -24,7 +24,6 @@ const Profile = () => {
     } else {
       setUser(email.email);
     }
-    console.log(email);
   }, []);
 
   return (

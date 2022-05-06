@@ -20,6 +20,8 @@ import FoodRecipeDetails from './pages/FoodRecipeDetails';
 import DrinkRecipeDetails from './pages/DrinkRecipeDetails';
 import FoodRecipeInProgress from './pages/FoodRecipeInProgress';
 import DrinkRecipeInProgress from './pages/DrinkRecipeInProgress';
+import FoodsByMainIngredient from './pages/FoodsByMainIngredient';
+import DrinksByMainIngredient from './pages/DrinksByMainIngredient';
 
 function App() {
   return (
@@ -48,8 +50,16 @@ function App() {
               element={ <DrinkRecipeDetails /> }
             />
             <Route
+              path="/foods/ingredient/:id"
+              element={ <FoodsByMainIngredient /> }
+            />
+            <Route
               path="/foods/:id/in-progress"
               element={ <FoodRecipeInProgress /> }
+            />
+            <Route
+              path="/drinks/ingredient/:id"
+              element={ <DrinksByMainIngredient /> }
             />
             <Route
               path="/drinks/:id/in-progress"
