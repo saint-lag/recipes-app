@@ -12,7 +12,6 @@ const FoodsByMainIngredient = () => {
   const { state: { ingredientName } } = useLocation();
   const [filteredResults, setFilteredResults] = useState([]);
   const filteredFoods = async () => {
-    console.log(`ingredientName: ${ingredientName}`);
     const results = await getMealsByIngredient(ingredientName);
     return results;
   };
@@ -27,16 +26,20 @@ const FoodsByMainIngredient = () => {
       <div className="filteredResultsContainer">
         {filteredResults.map((element, index) => (
           <Link
+            data-testid={ `${index}-recipe-card` }
             key={ index }
-            className="filteredResultContainer"
             to={ `/foods/${element.idMeal}` }
           >
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ element.strMealThumb }
-              alt={ element.strMeal }
-            />
-          </Link>))}
+            <div className="filteredResultContainer">
+              <img
+                data-testid={ `${index}-card-img` }
+                src={ element.strMealThumb }
+                alt={ element.strMeal }
+              />
+              <span data-testid={ `${index}-card-name` }>{element.strMeal}</span>
+            </div>
+          </Link>
+        ))}
       </div>
       <Footer />
     </div>

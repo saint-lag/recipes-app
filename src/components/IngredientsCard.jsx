@@ -11,11 +11,6 @@ const IngredientsCard = ({
 }) => {
   const ingredientType = ingredientName ? 'food' : 'drink';
 
-  /* const filteredDrinks = async () => {
-    const results = await getDrinksByIngredient(drinkName);
-    return results;
-  }; */
-
   return (
     <Link
       type="button"

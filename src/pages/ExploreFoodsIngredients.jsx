@@ -24,7 +24,6 @@ const ExploreFoodsIngredients = () => {
         {ingredients.map(
           ({ strIngredient, strDescription, idIngredient }, index) => (
             <IngredientsCard
-              // [TODO]: Mudar o valor da key
               key={ index }
               cardIndex={ index }
               cardImg={ `https://www.themealdb.com/images/ingredients/${strIngredient}-small.png` }
