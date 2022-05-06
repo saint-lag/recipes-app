@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-// import {
-// useLocation,
-// useParams } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+// useParams
+} from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { getMealsByIngredient } from '../services/theMealsDbAPI';
 
 const FoodsByMainIngredient = () => {
-  // const { state: { ingredientName } } = useLocation();
+  const { state: { ingredientName } } = useLocation();
   const [filteredResults, setFilteredResults] = useState([]);
   const filteredFoods = async () => {
-    console.log('ingredientName: salmon');
-    const results = await getMealsByIngredient('salmon');
+    console.log(`ingredientName: ${ingredientName}`);
+    const results = await getMealsByIngredient(ingredientName);
     return results;
   };
   useEffect(() => {
@@ -23,11 +25,18 @@ const FoodsByMainIngredient = () => {
     <div className="foodsByMainIngredientContainer">
       <Header />
       <div className="filteredResultsContainer">
-        {filteredResults.forEach((element) => {
-          <div className="filteredResultContainer">
-            {console.log(Object.keys(element))}
-          </div>;
-        })}
+        {filteredResults.map((element, index) => (
+          <Link
+            key={ index }
+            className="filteredResultContainer"
+            to={ `/foods/${element.idMeal}` }
+          >
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ element.strMealThumb }
+              alt={ element.strMeal }
+            />
+          </Link>))}
       </div>
       <Footer />
     </div>

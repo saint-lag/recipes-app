@@ -8,7 +8,6 @@ const IngredientsCard = ({
   ingredientName,
   drinkName,
   cardImg,
-  ingredientId,
 }) => {
   const ingredientType = ingredientName ? 'food' : 'drink';
 
@@ -22,10 +21,10 @@ const IngredientsCard = ({
       type="button"
       to={ `${
         ingredientType === 'food'
-          ? `/foods/ingredient/${ingredientId}`
+          ? `/foods/ingredient/${ingredientName}`
           : `/drinks/ingredient/${drinkName}`
       }` }
-      state={ { filteredResults: ingredientType === 'food'
+      state={ { ingredientName: ingredientType === 'food'
         ? ingredientName : drinkName } }
       className="ingredientCardDivContainer"
       data-testid={ `${cardIndex}-ingredient-card` }
